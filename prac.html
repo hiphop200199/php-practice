@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="demo"></div>
+    <script>
+      const xhr = new XMLHttpRequest(); //建立xhr物件
+      xhr.onload = function () {
+        document.querySelector(".demo").innerHTML = xhr.responseText; //設定事件處理
+        console.log("a");
+      };
+      xhr.open("get", "想用的伺服器程式"); //設定
+      console.log("b");
+
+      xhr.send(); //發送
+      console.log("c");
+    </script>
+  </body>
+</html>

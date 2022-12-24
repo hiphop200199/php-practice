@@ -20,11 +20,14 @@ $totalPages = ceil($totalRows / $perPage);
 $rows = $conn->query($sql)->fetchAll();
 include("./parts/head.php"); ?>
 <body>
+<span class="material-symbols-outlined lightbulb">
+lightbulb
+</span>
   <div class="container">
   <h2 class="w3-center w3-text-green">課程列表</h2>
     <?php include("./parts/pagination.php");?>
    
-    <table class=" w3-container w3-card-4 w3-light-grey  w3-margin ">
+    <table class=" w3-container  w3-light-grey  w3-margin shadowForBoxesLight ">
     <thead>
       <tr class="w3-green w3-center">
           <th>刪除課程</th>
@@ -83,5 +86,52 @@ include("./parts/head.php"); ?>
    
 
   </div>
- 
+  <script>
+  let darkTheme=localStorage.getItem("darkTheme");
+  let bulb=document.querySelector(".lightbulb");
+  bulb.addEventListener("click",()=>{
+    darkTheme=localStorage.getItem("darkTheme");
+    if(darkTheme!=="enabled"){
+        enableDarkTheme();
+    }else{
+        disableDarkTheme();
+    }   
+ });
+const enableDarkTheme=()=>{
+    let tableTh= document.querySelectorAll("table th");
+    let tableTd=document.querySelectorAll("table td");
+    document.body.classList.add("darkTheme");
+    document.querySelector(".navbar-row div").classList.add("shadowForBoxesDark");
+    document.querySelector(".navbar-row div").classList.remove("shadowForBoxesLight");
+    document.querySelector("table").classList.add("shadowForBoxesDark");
+    document.querySelector("table").classList.remove("w3-light-grey");
+    document.querySelector("table").classList.remove("shadowForBoxesLight");
+    document.querySelector("table").style.backgroundColor="rgb(45, 55, 45)";
+    document.querySelector("table").style.borderCollapse="collapse";
+    for(let i=0;i<tableTh.length;i++){
+      tableTh[i].style.border="1px solid rgb(255, 250, 200)";
+    }
+    for(let i=0;i<tableTd.length;i++){
+      tableTd[i].style.border="1px solid rgb(255, 250, 200)";
+    }
+    localStorage.setItem("darkTheme","enabled");
+}
+const disableDarkTheme=()=>{
+    let tableTh= document.querySelectorAll("table th");
+    let tableTd=document.querySelectorAll("table td");
+    document.body.classList.remove("darkTheme");
+    document.querySelector(".navbar-row div").classList.remove("shadowForBoxesDark");
+    document.querySelector(".navbar-row div").classList.add("shadowForBoxesLight");
+    document.querySelector("table").classList.remove("shadowForBoxesDark");
+    document.querySelector("table").classList.add("shadowForBoxesLight");
+    document.querySelector("table").classList.add("w3-light-grey");
+    for(let i=0;i<tableTh.length;i++){
+      tableTh[i].style.border="none";
+    }
+    for(let i=0;i<tableTd.length;i++){
+      tableTd[i].style.border="none";
+    }
+    localStorage.setItem("darkTheme",null);
+}  
+</script>
 <?php include("./parts/foot.php");?>

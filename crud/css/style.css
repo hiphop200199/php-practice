@@ -1,0 +1,25 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+div.w3-col{
+    width:15vw;
+}
+.is-disabled{
+ pointer-events: none;
+  cursor: default;
+  color:rgb(195, 195, 195);
+}
+.api-layout{
+    width: 30vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+

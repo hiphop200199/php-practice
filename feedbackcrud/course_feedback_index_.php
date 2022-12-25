@@ -1,8 +1,11 @@
 
 <?php include("parts/course_feedback_head.php");?>
 <body>
+<span class="material-symbols-outlined lightbulb">
+lightbulb
+</span>
   <div class="container">
-    <form action="./course_feedback_create.php" method="post" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+    <form action="./course_feedback_create.php" method="post" class="w3-container shadowForBoxesLight w3-light-grey w3-text-blue w3-margin">
 <h2 class="w3-center">課程回饋</h2>
 <?php if(isset($_GET["error"])) { ?>
 <div class="w3-panel w3-pale-red w3-border" style="font-size:1.5rem;"
@@ -43,13 +46,13 @@
         <p>評分:<span id="show-score"></span></p>
     </div>
 </div>
-
-
-  
-</div>
 <p class="w3-center">
 <button class="w3-button w3-section w3-blue w3-ripple" name="course_feedback_create"> 新增 </button><a class="w3-button w3-section w3-green w3-ripple" style="margin-left:1vw;" href="course_feedback_list.php">查詢</a>
 </p>
+
+  
+</div>
+
 </form>
 
   </div>
@@ -60,6 +63,55 @@
 rangeSlide.oninput=function(){
   showScore.innerHTML=this.value;
 }
+let darkTheme=localStorage.getItem("darkTheme");
+  let bulb=document.querySelector(".lightbulb");
+  bulb.addEventListener("click",()=>{
+    darkTheme=localStorage.getItem("darkTheme");
+    if(darkTheme!=="enabled"){
+        enableDarkTheme();
+    }else{
+        disableDarkTheme();
+    }   
+ });
+const enableDarkTheme=()=>{
+  let inputBoxes=document.querySelectorAll(".w3-input");
+  let inputPlaceholders=document.querySelectorAll("::placeholder");
+    document.body.classList.add("darkTheme");
+    for(let i=0;i<inputBoxes.length;i++){
+      inputBoxes[i].style.backgroundColor="rgb(15, 19, 15)";
+      inputBoxes[i].style.color="rgb(255,250,200)"
+    }
+    for(let i=0;i<inputBoxes.length;i++){
+      inputBoxes[i].classList.add("shadowForBoxesDark");
+    }
+    for(let i=0;i<inputPlaceholders.length;i++){
+      inputPlaceholders[i].style.color="rgb(255,250,200)";
+    }
+    document.querySelector("form").classList.add("shadowForBoxesDark");
+    document.querySelector("form").classList.remove("w3-light-grey");
+    document.querySelector("form").classList.remove("shadowForBoxesLight");
+    document.querySelector("form").style.backgroundColor="rgb(45, 55, 45)";
+    localStorage.setItem("darkTheme","enabled");
+}
+const disableDarkTheme=()=>{
+    let inputBoxes=document.querySelectorAll(".w3-input");
+    let inputPlaceholders=document.querySelectorAll("::placeholder");
+    document.body.classList.remove("darkTheme");
+    for(let i=0;i<inputBoxes.length;i++){
+        inputBoxes[i].style.backgroundColor="rgb(255,255,255)";
+        inputBoxes[i].style.color="rgb(100,100,100)";
+      }
+    for(let i=0;i<inputBoxes.length;i++){
+      inputBoxes[i].classList.remove("shadowForBoxesDark");
+    }
+    for(let i=0;i<inputPlaceholders.length;i++){
+      inputPlaceholders[i].style.color="rgb(100,100,100)";
+    }
+    document.querySelector("form").classList.remove("shadowForBoxesDark");
+    document.querySelector("form").classList.add("shadowForBoxesLight");
+    document.querySelector("form").classList.add("w3-light-grey");
+    localStorage.setItem("darkTheme",null);
+}  
 </script>
 </body>
 </html>

@@ -50,7 +50,7 @@ if(isset($_POST["create"])){
 lightbulb
 </span>
   <div class="container ">
-      <div class="api-layout w3-padding w3-center w3-card-4 w3-light-grey  w3-margin">
+      <div class="api-layout w3-padding w3-center  w3-light-grey  w3-margin shadowForBoxesLight">
         <h2 class="w3-center w3-text-blue"><?php echo "新增資料成功!";?></h2>
         <a class=" w3-button w3-section w3-blue w3-ripple"  href="index_.php">首頁</a>
       <a class=" w3-button w3-section w3-green w3-ripple"  href="list.php">查詢</a>

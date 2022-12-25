@@ -21,5 +21,25 @@ div.w3-col{
     align-items: center;
     flex-direction: column;
 }
+.lightbulb{
+    position: relative;
+    left: 96vw;
+    top:1vh;
+    cursor: pointer;
+    user-select: none;
+}
+.darkTheme{
+    background-color: rgb(15, 19, 15);
+    color: rgb(255, 250, 200);
+}
+.shadowForBoxesLight{
+    box-shadow: 4px 4px 20px 4px rgb(195, 195, 195);
+}
+.shadowForBoxesDark{
+    box-shadow: 0 0  5px 2px rgb(255,250,200);
+}
+
+
+
 
 

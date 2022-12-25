@@ -19,7 +19,9 @@ if(empty($search_result)){
 ?>
 <?php include("./parts/course_order_head.php"); ?>
 <body>
-    
+<span class="material-symbols-outlined lightbulb">
+lightbulb
+</span>  
 
 <div class="container">
     <form  action="course_order_edit-api.php" class="w3-container w3-card-4 w3-light-grey w3-text-deep-orange w3-margin" onsubmit="confirm('確認修改資料?'); " method="post">
@@ -54,15 +56,65 @@ if(empty($search_result)){
 
 
 <div class="button-container w3-center">
-    <a class="w3-button w3-section w3-blue w3-ripple"  href="course_order_index_.php">首頁</ a>
-    <a class="w3-button w3-section w3-green w3-ripple"  href="course_order_list.php">查詢</a>
-    <button type="submit" class="w3-button w3-section w3-deep-orange w3-ripple" > 修改 </button>
+    <a class="w3-button w3-section w3-blue w3-ripple w3-margin"  href="course_order_index_.php">首頁</ a>
+    <a class="w3-button w3-section w3-green w3-ripple w3-margin"  href="course_order_list.php">查詢</a>
+    <button type="submit" class="w3-button w3-section w3-deep-orange w3-ripple w3-margin" > 修改 </button>
 </div>
 </form>
 
   </div>
 </div>
-
+<script>
+  let darkTheme=localStorage.getItem("darkTheme");
+  let bulb=document.querySelector(".lightbulb");
+  bulb.addEventListener("click",()=>{
+    darkTheme=localStorage.getItem("darkTheme");
+    if(darkTheme!=="enabled"){
+        enableDarkTheme();
+    }else{
+        disableDarkTheme();
+    }   
+ });
+const enableDarkTheme=()=>{
+  let inputBoxes=document.querySelectorAll(".w3-input");
+  let inputPlaceholders=document.querySelectorAll("::placeholder");
+    document.body.classList.add("darkTheme");
+    for(let i=0;i<inputBoxes.length;i++){
+      inputBoxes[i].style.backgroundColor="rgb(15, 19, 15)";
+      inputBoxes[i].style.color="rgb(255,250,200)"
+    }
+    for(let i=0;i<inputBoxes.length;i++){
+      inputBoxes[i].classList.add("shadowForBoxesDark");
+    }
+    for(let i=0;i<inputPlaceholders.length;i++){
+      inputPlaceholders[i].style.color="rgb(255,250,200)";
+    }
+    document.querySelector("form").classList.add("shadowForBoxesDark");
+    document.querySelector("form").classList.remove("w3-light-grey");
+    document.querySelector("form").classList.remove("shadowForBoxesLight");
+    document.querySelector("form").style.backgroundColor="rgb(45, 55, 45)";
+    localStorage.setItem("darkTheme","enabled");
+}
+const disableDarkTheme=()=>{
+    let inputBoxes=document.querySelectorAll(".w3-input");
+    let inputPlaceholders=document.querySelectorAll("::placeholder");
+    document.body.classList.remove("darkTheme");
+    for(let i=0;i<inputBoxes.length;i++){
+        inputBoxes[i].style.backgroundColor="rgb(255,255,255)";
+        inputBoxes[i].style.color="rgb(100,100,100)";
+      }
+    for(let i=0;i<inputBoxes.length;i++){
+      inputBoxes[i].classList.remove("shadowForBoxesDark");
+    }
+    for(let i=0;i<inputPlaceholders.length;i++){
+      inputPlaceholders[i].style.color="rgb(100,100,100)";
+    }
+    document.querySelector("form").classList.remove("shadowForBoxesDark");
+    document.querySelector("form").classList.add("shadowForBoxesLight");
+    document.querySelector("form").classList.add("w3-light-grey");
+    localStorage.setItem("darkTheme",null);
+}  
+</script>
 </body>
 
 <?php include './parts/course_order_foot.php' ?>

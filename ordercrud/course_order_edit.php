@@ -24,7 +24,7 @@ lightbulb
 </span>  
 
 <div class="container">
-    <form  action="course_order_edit-api.php" class="w3-container w3-card-4 w3-light-grey w3-text-deep-orange w3-margin" onsubmit="confirm('確認修改資料?'); " method="post">
+    <form  action="course_order_edit-api.php" class="w3-container w3-card-4 w3-light-grey w3-text-deep-orange w3-margin" onsubmit="return confirm('確認修改資料?'); " method="post">
     <input type="hidden" name="order_id" value="<?= $search_result['order_id'] ?>">
 <h2 class="w3-center">資料修改</h2>
 

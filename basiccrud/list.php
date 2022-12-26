@@ -26,7 +26,8 @@ lightbulb
   <div class="container">
   <h2 class="w3-center w3-text-green">課程列表</h2>
     <?php include("./parts/pagination.php");?>
-   
+    
+      
     <table class=" w3-container  w3-light-grey  w3-margin shadowForBoxesLight ">
     <thead>
       <tr class="w3-green w3-center">

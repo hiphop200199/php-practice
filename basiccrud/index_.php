@@ -82,7 +82,8 @@ lightbulb
     </div>
 </div>
 <p class="w3-center">
-<button class="w3-button w3-section w3-blue w3-ripple" name="create"> 新增 </button><a class="w3-button w3-section w3-green w3-ripple" style="margin-left:1vw;" href="list.php">查詢</a>
+<button class="w3-button w3-section w3-blue w3-ripple" name="create"> 新增 </button>
+<a class="w3-button w3-section w3-green w3-ripple" style="margin-left:1vw;" href="list.php">查詢</a>
 </p>
 </form>
 
